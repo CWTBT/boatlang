@@ -1,4 +1,5 @@
 > {-# LANGUAGE GADTSyntax        #-}
+> {-# OPTIONS_GHC -Wall #-}
 > module Puzzle where
 > import Problems
 > import Data.List            as L
@@ -89,4 +90,4 @@ List comprehension partially derived from
 https://stackoverflow.com/questions/34044366/how-to-extract-all-unique-pairs-of-a-list-in-haskell/34045121
 
 > allPairs :: [a] -> [(a, a)]
-> allPairs l = [(x, y) | (x:xs) <- tails l, (y:ys) <- tails (reverse l)]
+> allPairs l = [(x, y) | (x:_) <- tails l, (y:_) <- tails (reverse l)]

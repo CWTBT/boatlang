@@ -1,4 +1,5 @@
 > {-# LANGUAGE GADTSyntax        #-}
+> {-# OPTIONS_GHC -Wall #-}
 > module Problems where
 > import qualified Data.Graph as G
 > import qualified Data.Map   as M
@@ -42,7 +43,7 @@ all items on the "right side"
 >   AbsentError :: String -> ProbError
 
 > showProb :: Prob -> String
-> showProb (Prob m bsize s g (lside, rside)) = case s of 
+> showProb (Prob _ _ s _ (lside, rside)) = case s of 
 >   R -> (showState lside "[") ++ " |-->| " ++ (showState rside "[")
 >   L -> (showState lside "[") ++ " |<--| " ++ (showState rside "[")
 
@@ -76,7 +77,7 @@ a list of edges that can be used to construct the
 graph.
 
 > mapVs :: [(String, String)] -> [(G.Vertex, G.Vertex)] -> VMap -> [(G.Vertex, G.Vertex)]
-> mapVs [] vs m        = vs
+> mapVs [] vs _        = vs
 > mapVs (c:confs) vs m = mapVs confs ((mapV c m):vs) m  
 
 > mapV :: (String, String) -> VMap -> (G.Vertex, G.Vertex)

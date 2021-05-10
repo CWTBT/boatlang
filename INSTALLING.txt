@@ -1,0 +1,15 @@
+"Instructions.hs" has been provided for testing some examples,
+but if you want, you can work in any hs file that imports both
+Problems and Puzzle.
+
+TO CREATE A PROBLEM: Use initProb :: [String] -> Integer -> [(String, String)]
+	- [String] = a list of all items in the problem
+	- Integer  = the amount of items the boat can carry at once
+	- [(String, String)] = a list of item conflicts; for example,
+			       [("Wolf", "Goat)] means the wolf and goat
+			       may never be left alone on the same side.
+
+TO TEST A SOLUTION: Use execProb :: Prob -> [[String]]
+	- Solutions are given in the form of 2D lists, where each
+	  inner list is one "step" of the problem and contains all
+	  the items you wish to move on that "step."
